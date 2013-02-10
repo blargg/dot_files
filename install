@@ -7,14 +7,19 @@
 # a softlink is placed in the destination (defined below)
 # file names are realative to the project directory and
 # like names are realative to the user defined folder
-LINK_MAP=('file1:link1'
-          'file1:.link2'
-          'file1:vim/config'
-          'zsh:.zsh'
+LINK_MAP=(
+          'gitconfig:.gitconfig'
+          'vimrc:.vimrc'
+          'vim:.vim'
+          'xmobarrc:.xmobarrc'
+          'zshrc:.zshrc'
+          'xmod:.xmod'
+          'lock:bin/lock'
+          'volume:bin/volume'
           )
 
 # the root of where you want the links to show up
-DEST="$HOME/dots_test"
+DEST="$HOME"
 
 
 print_usage(){
@@ -94,7 +99,7 @@ for str in ${LINK_MAP[@]}; do
     done
     link="$DEST/$link"
 
-    #mkdir -p $(dirname $link)
+    mkdir -p $(dirname $link)
 
     #rename variables
     src=$FILE_PATH
