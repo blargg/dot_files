@@ -12,6 +12,7 @@ LINK_MAP=(
           'vimrc:.vimrc'
           'vim:.vim'
           'xmobarrc:.xmobarrc'
+          'xmonad.hs:.xmonad/xmonad.hs'
           'zshrc:.zshrc'
           'zsh:.zsh'
           'commonsh:.commonsh'

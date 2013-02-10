@@ -1,4 +1,5 @@
-dot_files
+Dot Files
 =========
 
-My personal dot files
+Collection of dot files and other settings.
+Organised for easier use.
