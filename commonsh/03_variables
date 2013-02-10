@@ -1,0 +1,10 @@
+#! /bin/sh
+# variables for use
+export BROWSER="chromium"
+export EDITOR="vim"
+export PATH="$PATH:$HOME/bin"
+export SVN242="https://subversion.ews.illinois.edu/svn/sp13-cs242/jankaus2"
+
+### android build variables ###
+export USE_CCACHE=1
+export CCACHE_DIR=~/.ccache

@@ -1,0 +1,16 @@
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':vcs_info:*' enable git cvs svn
+
+zstyle ':completion:*:*:pacman:*'	menu yes select
+zstyle ':completion:*:pacman:*'	force-list always
+
+zstyle ':completion:*:*:make:*'	menu yes select
+zstyle ':completion:*:make:*'	force-list always
+
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'	force-list always
+
+zstyle ':completion:*:*:killall:*' menu yes select
+zstyle ':completion:*:killall:*'	force-list always
+

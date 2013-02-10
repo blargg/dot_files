@@ -13,6 +13,8 @@ LINK_MAP=(
           'vim:.vim'
           'xmobarrc:.xmobarrc'
           'zshrc:.zshrc'
+          'zsh:.zsh'
+          'commonsh:.commonsh'
           'xmod:.xmod'
           'lock:bin/lock'
           'volume:bin/volume'
