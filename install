@@ -1,0 +1,156 @@
+#!/bin/bash
+# Based on a script by Zach Holman.
+
+# LINK_MAP usage
+# 'file:link'
+# This is a map from files in the project, to where
+# a softlink is placed in the destination (defined below)
+# file names are realative to the project directory and
+# like names are realative to the user defined folder
+LINK_MAP=('file1:link1'
+          'file1:.link2'
+          'file1:vim/config'
+          'zsh:.zsh'
+          )
+
+# the root of where you want the links to show up
+DEST="$HOME/dots_test"
+
+
+print_usage(){
+    echo "$0: links your dofiles from your home folder to this project
+$0 [-h]
+* Make sure that this script stays in the folder that it came in (should be the
+      main directory for the project).
+* links are realative (they don't start from root)
+* if you move this folder, all the links will break
+
+-h    print this help and then exits
+        "
+}
+
+set -e
+
+echo ''
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+user () {
+  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+link_files () {
+  ln -s $1 $2
+  success "linked $1 to $2"
+}
+
+#TODO this could be more robust
+if [ "$1" = "-h" ]
+then
+    print_usage
+    exit 0
+fi
+
+# change directories to be in the same one as the executable (in case we aren't already there)
+cd `dirname $0`> /dev/null
+DIR=$PWD
+# need the realative directory of this file to the user's home folder
+REL_DIR="${DIR#"$DEST/"}"
+
+overwrite_all=false
+backup_all=false
+skip_all=false
+
+  info 'installing dotfiles'
+
+for str in ${LINK_MAP[@]}; do
+
+
+    # Determine the file pointed to and the name of the link
+    file=${str%:*}
+    #echo "link = ${str#*:}"
+    link=${str#*:}
+
+    ### Find Depth
+    # determine the depth of the link destination
+    _tmp="${link//[^\/]}"
+    _depth=${#_tmp}
+    FILE_PATH="$REL_DIR/$file"
+    for ((i=0; i<$_depth; i++))
+    do
+        FILE_PATH="../$FILE_PATH"
+    done
+    link="$DEST/$link"
+
+    #mkdir -p $(dirname $link)
+
+    #rename variables
+    src=$FILE_PATH
+    dest=$link
+
+    if [ -f $dest ] || [ -d $dest ]
+    then
+
+      overwrite=false
+      backup=false
+      skip=false
+
+      if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+      then
+        user "File already exists: `basename $src`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        read -n 1 action
+
+        case "$action" in
+          o )
+            overwrite=true;;
+          O )
+            overwrite_all=true;;
+          b )
+            backup=true;;
+          B )
+            backup_all=true;;
+          s )
+            skip=true;;
+          S )
+            skip_all=true;;
+          * )
+            ;;
+        esac
+      fi
+
+      if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
+      then
+        rm -rf $dest
+        success "removed $dest"
+      fi
+
+      if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
+      then
+        mv $dest $dest\.backup
+        success "moved $dest to $dest.backup"
+      fi
+
+      if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
+      then
+        link_files $src $dest
+      else
+        success "skipped $src"
+      fi
+
+    else
+      link_files $src $dest
+    fi
+
+done

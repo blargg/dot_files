@@ -1,0 +1,20 @@
+[user]
+	name = blargg
+	email = anuibis@sbcglobal.net
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[credential]
+	helper = cache
+[alias]
+	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset' --all
+	ll = !git l --all
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+[color]
+	ui = auto
