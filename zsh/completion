@@ -1,0 +1,13 @@
+# completion menu
+zstyle ':completion:*' menu select=1
+
+# change the order up
+zstyle ':completion:*:(cd|mv|cp):*' tag-order local-directories directory-stack named-directories path-directories
+
+# man page completion
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections true
+
+# caching
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${HOME}/.zsh/.zcompcache-${HOST}"

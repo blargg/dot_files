@@ -10,8 +10,6 @@ watch=( all )
 export LOGCHECK=30
 export WATCHFMT=$'\e[00;00m\e[01;36m'" -- %n@%m has %(a.logged in.logged out) --"$'\e[00;00m'
 
-#alias -s pdf=zathura
-
 # bind Ctrl-O to ranger-cd:
 bindkey -s '^O' '^qranger-cd\n'
 

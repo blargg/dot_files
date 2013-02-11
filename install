@@ -15,6 +15,7 @@ LINK_MAP=(
           'xmonad.hs:.xmonad/xmonad.hs'
           'zshrc:.zshrc'
           'zsh:.zsh'
+          'bashrc:.bashrc'
           'commonsh:.commonsh'
           'xmod:.xmod'
           'lock:bin/lock'
@@ -86,6 +87,8 @@ skip_all=false
 for str in ${LINK_MAP[@]}; do
 
 
+  # TODO tear out a lot of this.
+  # use ln -s -r -b instead
     # Determine the file pointed to and the name of the link
     file=${str%:*}
     #echo "link = ${str#*:}"
