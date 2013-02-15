@@ -3,6 +3,5 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias EWS='ssh jankaus2@remlnx.ews.illinois.edu'
 alias cdh='urxvt -cd $(pwd) &'
 alias sys='sudo systemctl'
