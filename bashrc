@@ -1,7 +1,7 @@
 
 # load shell settings
 if [ -d "${HOME}/.commonsh" ] ; then
-	for file in $(ls $HOME/.commonsh/) ; do
-		. "${HOME}/.commonsh/${file}"
+	for file in $HOME/.commonsh/* ; do
+		. "$file"
 	done
 fi
