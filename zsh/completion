@@ -13,7 +13,7 @@ zstyle ':completion:*' completer _expand _complete _prefix _correct _match _appr
 
 # caching
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path ~/.zsh/.cache
 zstyle ':vcs_info:*' enable git cvs svn
 
 # make menus for pacman
