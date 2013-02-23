@@ -11,6 +11,11 @@ zstyle ':completion:*:manuals.*'  insert-sections true
 # neat-o new features
 zstyle ':completion:*' completer _expand _complete _prefix _correct _match _approximate
 
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:matches' group 'yes'
+
 # caching
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/.cache
