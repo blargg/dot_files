@@ -3,6 +3,7 @@
 	email = anuibis@sbcglobal.net
 [core]
 	editor = vim
+	excludesfile = /home/tom/.gitignore
 [merge]
 	tool = vimdiff
 [credential]

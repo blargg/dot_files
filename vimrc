@@ -116,7 +116,7 @@ endif
 set laststatus=2
 set shortmess=atI
 if has('statusline')
-   set statusline=%<%F\ %r[%{&ff}]%y%m\ %=\ Line\ %l\/%L\ Col:\ %v\ (%P)
+   set statusline=%{fugitive#statusline()}%<%F\ %r[%{&ff}]%y%m\ %=\ Line\ %l\/%L\ Col:\ %v\ (%P)
 endif
 
 " Enable modelines only on secure vim
@@ -209,6 +209,14 @@ endif
 " Tagbar
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
+" Better window split navigation
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Ropevim python code navigation
+
 " Clear search colors
 nmap <silent> <leader>n :silent :nohlsearch<CR>
 
@@ -246,6 +254,9 @@ if has('autocmd')
       autocmd BufNewFile,BufRead *.proto set filetype=proto
       autocmd BufNewFile,BufRead *.atomo set filetype=atomo
       autocmd BufNewFile,BufRead *.atomo setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 commentstring=--\ %s
+
+      autocmd FileType python set omnifunc=pythoncomplete#Complete
+      let g:SuperTabDefaultCompletionType = "context"
    endif
 
    " make tab reindent in normal mode
@@ -340,12 +351,6 @@ noremap <silent> <F4> :set hls!<CR>
 " Don't force column 0 for #
 inoremap # X<BS>#
 
-" Always map <C-h> to backspace
-" Both interix and cons use C-? as forward delete,
-" besides those two exceptions, always set it to backspace
-" Also let interix use ^[[U for end and ^[[H for home
-map  <C-h> <BS>
-map! <C-h> <BS>
 if (&term =~ "interix")
    map  <C-?> <DEL>
    map! <C-?> <DEL>

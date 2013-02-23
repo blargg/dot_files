@@ -9,6 +9,7 @@
 # like names are realative to the user defined folder
 LINK_MAP=(
           'gitconfig:.gitconfig'
+          'gitignore:.gitignore'
           'vimrc:.vimrc'
           'vim:.vim'
           'xmobarrc:.xmobarrc'
