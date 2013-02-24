@@ -10,6 +10,8 @@ zstyle ':completion:*:manuals.*'  insert-sections true
 
 # neat-o new features
 zstyle ':completion:*' completer _expand _complete _prefix _correct _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:8:approximate:*' max-errors 1 numeric
 
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
