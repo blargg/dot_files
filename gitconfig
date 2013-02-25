@@ -5,7 +5,7 @@
 	editor = vim
 	excludesfile = /home/tom/.gitignore
 [merge]
-	tool = vimdiff
+	tool = fugitive
 [credential]
 	helper = cache
 [alias]
@@ -19,3 +19,5 @@
 	lg = log -p
 [color]
 	ui = auto
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
