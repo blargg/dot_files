@@ -47,8 +47,7 @@ set noerrorbells           " Disable error bells
 set visualbell             " Turn visual bell on
 set t_vb=                  " Make the visual bell emit nothing
 set showcmd                " Show the current command
-set colorcolumn=80
-"highlight link ColorColumn VertSplit
+
 " --- Command-t options ---
 let g:CommandTMaxHeight=10
 
@@ -424,4 +423,9 @@ function! RestoreSession()
 endfunction
 autocmd VimEnter * call RestoreSession()
 
-highlight ColorColumn ctermbg=darkgrey
+" TODO this should be higher, with the other options, but needs to be after
+" colorsheme
+if has('colorcolumn')
+   set colorcolumn=80
+   highlight ColorColumn ctermbg=darkgrey
+endif
