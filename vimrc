@@ -425,7 +425,7 @@ autocmd VimEnter * call RestoreSession()
 
 " TODO this should be higher, with the other options, but needs to be after
 " colorsheme
-if has('colorcolumn')
+if exists("&colorcolumn")
    set colorcolumn=80
    highlight ColorColumn ctermbg=darkgrey
 endif
