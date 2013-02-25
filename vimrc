@@ -215,6 +215,8 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+nmap <c-t> :NERDTree<CR>
+
 " Ropevim python code navigation
 
 " Clear search colors
