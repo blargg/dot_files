@@ -3,7 +3,7 @@
 	email = anuibis@sbcglobal.net
 [core]
 	editor = vim
-	excludesfile = /home/tom/.gitignore
+	excludesfile = ~/.gitignore
 [merge]
 	tool = fugitive
 [credential]
