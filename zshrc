@@ -2,8 +2,7 @@ autoload -Uz compinit promptinit vcs_info
 compinit
 promptinit
 prompt walters
-autoload zcalc
-bindkey -e
+autoload -U zcalc
 
 ### watch ###
 watch=( all )

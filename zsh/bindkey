@@ -48,6 +48,7 @@ case $TERM in
 		bindkey '\e[3~' delete-char
 	;;
 	*rxvt*|Eterm|aterm)
+		bindkey '^[[Z' reverse-menu-complete
 		bindkey '\e[c' emacs-forward-word
 		bindkey '\e[d' emacs-backward-word
 		bindkey '\eOc' emacs-forward-word
