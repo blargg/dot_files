@@ -320,25 +320,8 @@ if has('eval')
    endfun
 endif
 
-" I'm taking these out, they are in my way
-" some emacs-isms are OK
-"map! <C-a> <Home>
-"map  <C-a> <Home>
-"map! <C-e> <End>
-"map  <C-e> <End>
-"imap <C-f> <Right>
-"imap <C-b> <Left>
-"map! <M-BS> <C-w>
-"map  <C-k> d$
-"if has('eval')
-   "inoremap <buffer> <C-K> <C-R>=EmacsKill()<CR>
-"endif
-
 " w!! for sudo w!
 "cmap w!! w !sudo tee % >/dev/null
-
-" clear search
-"nnoremap <esc> :noh<return><esc>
 
 " Disable q and Q
 map q <Nop>
