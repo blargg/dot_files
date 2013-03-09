@@ -35,6 +35,8 @@ set infercase              " Attempt to figure out the correct case
 set showfulltag            " Show full tags when doing completion
 set virtualedit=block      " Only allow virtual editing in block mode
 set lazyredraw             " Lazy Redraw (faster macro execution)
+set foldmethod=syntax      " Fold based on syntax
+set foldlevel=10           " Don't start folding until it gets deep
 set wildmenu               " Menu on completion please
 set wildmode=longest,full  " Match the longest substring, complete with first
 set wildignore=*.o,*~      " Ignore temp files in wildmenu
@@ -90,6 +92,9 @@ if has('autocmd')
    if has('eval')
       autocmd BufReadPost * :call s:DetectDetectIndent()
    endif
+
+   "TODO consider moving this to ftplugin files
+   autocmd FileType html,htmldjango setlocal foldmethod=indent
 
    if has('viminfo')
       autocmd BufReadPost *
@@ -400,7 +405,7 @@ nmap SQ <ESC>:mksession!<CR>:wqa<CR>
 " if vim is called with no arguments, source the Session.vim
 " file in the current directory
 function! RestoreSession()
-	if argc() == 0 && filereadable("./Session.vim") " if vim is called without arguments
+	if argc() == 0 && filereadable("./Session.vim")
 		execute 'source ./Session.vim'
 	end
 endfunction
