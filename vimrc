@@ -68,14 +68,6 @@ endif
 
 " ---- Folding ----
 if has('eval')
-   fun! WideFold()
-      if winwidth(0) > 90
-         setlocal foldcolumn=1
-      else
-         setlocal foldcolumn=0
-      endif
-   endfun
-
    let g:detectindent_preferred_expandtab = 0
    let g:detectindent_preferred_indent = 4
 
@@ -87,14 +79,17 @@ if has('eval')
    endfun
 endif
 
+"TODO consider moving this to ftplugin files
+if has('autocmd')
+   autocmd FileType html,htmldjango setlocal foldmethod=indent
+endif
+
+
 if has('autocmd')
    autocmd BufEnter * :call WideFold()
    if has('eval')
-      autocmd BufReadPost * :call s:DetectDetectIndent()
+      "autocmd BufReadPost * :call s:DetectDetectIndent()
    endif
-
-   "TODO consider moving this to ftplugin files
-   autocmd FileType html,htmldjango setlocal foldmethod=indent
 
    if has('viminfo')
       autocmd BufReadPost *

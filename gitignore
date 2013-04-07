@@ -5,3 +5,6 @@
 
 *.swp
 __pycache__
+
+# other data
+tags
