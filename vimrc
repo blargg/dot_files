@@ -86,7 +86,6 @@ endif
 
 
 if has('autocmd')
-   autocmd BufEnter * :call WideFold()
    if has('eval')
       "autocmd BufReadPost * :call s:DetectDetectIndent()
    endif
