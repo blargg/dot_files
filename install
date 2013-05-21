@@ -18,6 +18,7 @@ LINK_MAP=(
           'zsh:.zsh'
           'bashrc:.bashrc'
           'commonsh:.commonsh'
+          'Xdefaults:.Xdefaults'
           'xmod:.xmod'
           'lock:bin/lock'
           'volume:bin/volume'
