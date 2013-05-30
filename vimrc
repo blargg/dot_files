@@ -25,12 +25,13 @@ set nocompatible           " Don't emulate vi's limitations
 set tabstop=4              " 4 spaces for tabs
 set shiftwidth=4           " 4 spaces for indents
 set smarttab               " Tab next line based on current line
-set expandtab             " Spaces for indentation
+set expandtab              " Spaces for indentation
 set autoindent             " Automatically indent next line
 if has('smartindent')
    set smartindent            " Indent next line based on current line
 endif
-"set linebreak             " Display long lines wrapped at word boundaries
+set nowrap
+set linebreak              " Display long lines wrapped at word boundaries
 set incsearch              " Enable incremental searching
 set hlsearch               " Highlight search matches
 set ignorecase             " Ignore case when searching...
@@ -47,7 +48,7 @@ set wildignore=*.o,*~      " Ignore temp files in wildmenu
 set scrolloff=3            " Show 3 lines of context during scrolls
 set sidescrolloff=2        " Show 2 columns of context during scrolls
 set backspace=2            " Normal backspace behavior
-"set textwidth=80           " Break lines at 80 characters
+set textwidth=80           " Break lines at 80 characters
 set hidden                 " Allow flipping of buffers without saving
 set noerrorbells           " Disable error bells
 set visualbell             " Turn visual bell on
@@ -403,15 +404,20 @@ nmap SQ <ESC>:mksession!<CR>:wqa<CR>
 " if vim is called with no arguments, source the Session.vim
 " file in the current directory
 function! RestoreSession()
-	if argc() == 0 && filereadable("./Session.vim")
-		execute 'source ./Session.vim'
-	end
+    if argc() == 0 && filereadable("./Session.vim")
+        execute 'source ./Session.vim'
+    end
 endfunction
 autocmd VimEnter * call RestoreSession()
 
-" TODO this should be higher, with the other options, but needs to be after
-" colorsheme
-if exists("&colorcolumn")
-   set colorcolumn=80
-   highlight ColorColumn ctermbg=darkgrey
-endif
+" Toggle colorcolumn
+function! g:ToggleColorColumn()
+    if &colorcolumn != ''
+        setlocal colorcolumn&
+    else
+        setlocal colorcolumn=+1
+    endif
+endfunction
+
+nnoremap <silent> <F2> :call g:ToggleColorColumn() <CR>
+inoremap <silent> <F2> <C-O>:call g:ToggleColorColumn() <CR>

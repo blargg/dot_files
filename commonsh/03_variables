@@ -7,3 +7,5 @@ export PATH="$PATH:$HOME/bin"
 ### android build variables ###
 export USE_CCACHE=1
 export CCACHE_DIR=~/.ccache
+
+eval $(dircolors -b ~/.dircolors)
