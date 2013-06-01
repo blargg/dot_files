@@ -11,7 +11,7 @@ import System.IO
 modm = mod1Mask
 
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = map show [1..9 :: Int]
+myWorkspaces = zipWith (\num name -> num ++ ":" ++ name) (map show [1..]) ["general", "web", "programming", "music", "other"]
 
 main = do
     xmproc <- spawnPipe "~/bin/xmobar"
