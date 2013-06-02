@@ -3,7 +3,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CopyWindow
 import System.IO
@@ -37,7 +37,7 @@ myWorkspaces = zipWith joinStr numbers names
           numbers = (map show [1..])
           joinStr = (\num name -> num ++ ":" ++ name)
 
-myConfig pipeproc = additionalKeys myConfig' myKeys
+myConfig pipeproc = addAllMyKeys myConfig'
     where myConfig' = defaultConfig
                         { terminal = "urxvt"
                         , workspaces = myWorkspaces
@@ -50,18 +50,31 @@ myConfig pipeproc = additionalKeys myConfig' myKeys
                             }
                         }
 
+addAllMyKeys config = foldl (additionalKeysP) configWithKeyMask stringKeys
+    where configWithKeyMask = foldl (additionalKeys) config keyMaskKeys
+          keyMaskKeys = [myKeys, myWorkspaceKeys]
+          stringKeys = [myMediaKeys]
+
 myKeys = [ ((modm .|. shiftMask, xK_l), spawn "~/bin/lock")
          , ((modm, xK_a), goToSelected defaultGSConfig)
          , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
          , ((0, xK_Print), spawn "scrot")
-         , ((modm .|. controlMask, xK_x), shellPrompt myXPConfig)
+         , ((modm, xK_p), shellPrompt myXPConfig)
          , ((modm .|. shiftMask, xK_a), changeDir myXPConfig)
+         , ((modm, xK_b), sendMessage ToggleStruts)
          ]
-         ++
-         [((m .|. modm, k), windows $ f i)
-         | (i,k) <- zip (myWorkspaces) [xK_1..]
-         , (f,m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]
-         ]
+
+myWorkspaceKeys =
+    [((m .|. modm, k), windows $ f i)
+    | (i,k) <- zip (myWorkspaces) [xK_1..]
+    , (f,m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]
+    ]
+
+myMediaKeys =
+    [ ("<XF86AudioLowerVolume>", spawn "~/bin/volume down")
+    , ("<XF86AudioRaiseVolume>", spawn "~/bin/volume up")
+    , ("<XF86AudioMute>", spawn "~/bin/volume mute")
+    ]
 
 myXPConfig = defaultXPConfig
                 { font = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
