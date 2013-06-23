@@ -6,6 +6,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CopyWindow
+import XMonad.Actions.WindowGo
 import System.IO
 
 import XMonad.Prompt
@@ -32,10 +33,7 @@ myLayout =  setOptions $ tiled ||| Mirror Accordion ||| Circle ||| StackTile 1 (
           delta = 3/100
 
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = zipWith joinStr numbers names
-    where names = ["general", "web", "programming", "music", "other"]
-          numbers = (map show [1..])
-          joinStr = (\num name -> num ++ ":" ++ name)
+myWorkspaces = map show [1..9::Int]
 
 myConfig pipeproc = addAllMyKeys myConfig'
     where myConfig' = defaultConfig
@@ -50,18 +48,18 @@ myConfig pipeproc = addAllMyKeys myConfig'
                             }
                         }
 
-addAllMyKeys config = foldl (additionalKeysP) configWithKeyMask stringKeys
-    where configWithKeyMask = foldl (additionalKeys) config keyMaskKeys
-          keyMaskKeys = [myKeys, myWorkspaceKeys]
-          stringKeys = [myMediaKeys]
+addAllMyKeys config = config `additionalKeys` keyMaskKeys `additionalKeysP` stringKeys
+    where keyMaskKeys = myKeys ++ myWorkspaceKeys
+          stringKeys = myMediaKeys
 
 myKeys = [ ((modm .|. shiftMask, xK_l), spawn "~/bin/lock")
          , ((modm, xK_a), goToSelected defaultGSConfig)
-         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-         , ((0, xK_Print), spawn "scrot")
+         , ((controlMask, xK_Print), spawn "~/bin/screenshot win")
+         , ((0, xK_Print), spawn "~/bin/screenshot scr")
          , ((modm, xK_p), shellPrompt myXPConfig)
          , ((modm .|. shiftMask, xK_a), changeDir myXPConfig)
          , ((modm, xK_b), sendMessage ToggleStruts)
+         , ((mod4Mask, xK_w), raiseBrowser)
          ]
 
 myWorkspaceKeys =
