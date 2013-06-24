@@ -48,7 +48,7 @@ set wildignore=*.o,*~      " Ignore temp files in wildmenu
 set scrolloff=3            " Show 3 lines of context during scrolls
 set sidescrolloff=2        " Show 2 columns of context during scrolls
 set backspace=2            " Normal backspace behavior
-set textwidth=80           " Break lines at 80 characters
+"set textwidth=80           " Break lines at 80 characters
 set hidden                 " Allow flipping of buffers without saving
 set noerrorbells           " Disable error bells
 set visualbell             " Turn visual bell on
@@ -415,7 +415,7 @@ function! g:ToggleColorColumn()
     if &colorcolumn != ''
         setlocal colorcolumn&
     else
-        setlocal colorcolumn=+1
+        setlocal colorcolumn=80
     endif
 endfunction
 
