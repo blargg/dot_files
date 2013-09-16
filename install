@@ -19,7 +19,6 @@ LINK_MAP=(
           'bashrc:.bashrc'
           'commonsh:.commonsh'
           'dircolors:.dircolors'
-          'Xdefaults:.Xdefaults'
           'xmod:.xmod'
           'lock:bin/lock'
           'volume:bin/volume'
