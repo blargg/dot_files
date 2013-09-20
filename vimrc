@@ -1,5 +1,4 @@
 " vimrc
-" Current author: David Majnemer
 " Original author: Saleem Abdulrasool <compnerd@compnerd.org>
 " vim: set ts=3 sw=3 et nowrap:
 
@@ -48,12 +47,13 @@ set wildignore=*.o,*~      " Ignore temp files in wildmenu
 set scrolloff=3            " Show 3 lines of context during scrolls
 set sidescrolloff=2        " Show 2 columns of context during scrolls
 set backspace=2            " Normal backspace behavior
-"set textwidth=80           " Break lines at 80 characters
+set textwidth=80           " Break lines at 80 characters
 set hidden                 " Allow flipping of buffers without saving
 set noerrorbells           " Disable error bells
 set visualbell             " Turn visual bell on
 set t_vb=                  " Make the visual bell emit nothing
 set showcmd                " Show the current command
+set formatoptions+=j
 
 " --- Command-t options ---
 let g:CommandTMaxHeight=10
@@ -415,7 +415,7 @@ function! g:ToggleColorColumn()
     if &colorcolumn != ''
         setlocal colorcolumn&
     else
-        setlocal colorcolumn=80
+        setlocal colorcolumn=+1
     endif
 endfunction
 
