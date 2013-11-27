@@ -38,7 +38,7 @@ myConfig pipeproc = addAllMyKeys myConfig'
     where myConfig' = defaultConfig
                         { terminal = "urxvt"
                         , workspaces = myWorkspaces
-                        , manageHook = manageDocks <+> manageHook defaultConfig
+                        , manageHook = manageDocks <+> myManageHook
                         , layoutHook = myLayout
                         , modMask = modm
                         , logHook = dynamicLogWithPP xmobarPP
@@ -77,6 +77,9 @@ myMediaKeys =
     , ("<XF86AudioRaiseVolume>", spawn "~/bin/volume up")
     , ("<XF86AudioMute>", spawn "~/bin/volume mute")
     ]
+
+myManageHook = composeAll
+    [ className =? "MPlayer" --> doFloat ]
 
 myXPConfig = defaultXPConfig
                 { font = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
