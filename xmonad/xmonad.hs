@@ -60,6 +60,7 @@ myKeys = [ ((modm .|. shiftMask, xK_l), spawn "~/bin/lock")
          , ((modm, xK_b), sendMessage ToggleStruts)
          , ((modm .|. controlMask, xK_backslash), spawn "sudo /usr/bin/systemctl suspend")
          , ((mod4Mask, xK_w), raiseBrowser)
+         , ((modm .|. shiftMask, xK_o), restart "/home/tom/bin/changewm" True)
          ]
 
 myWorkspaceKeys =
