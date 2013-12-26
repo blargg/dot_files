@@ -186,9 +186,6 @@ if has('autocmd')
    " subversion commit messages need not be backed up
    autocmd BufRead svn-commit.tmp :setlocal nobackup
 
-   " assume *.tex is tex, not plaintex
-   au BufRead,BufNewFile *.tex set filetype=tex
-
    " mutt does not like UTF-8
    autocmd BufRead,BufNewFile *
       \ if &ft == 'mail' | set fileencoding=iso8859-1 | endif
@@ -425,17 +422,6 @@ endfunction
 nnoremap <silent> <F2> :call g:ToggleColorColumn() <CR>
 inoremap <silent> <F2> <C-O>:call g:ToggleColorColumn() <CR>
 
-" tex settings
-function! g:TexCompile()
-    execute ":silent !pdflatex " . expand('%') . ">/dev/null &"
-    redraw!
-endfunction
-
-function! g:TexShowPDF()
-    let str=split(expand('%'), ".tex")
-    execute ":silent !mimeopen " . str[0] . ".pdf>&/dev/null &"
-    redraw!
-endfunction
-
-nmap <silent> <leader>ll :call g:TexCompile()<CR>
-nmap <silent> <leader>lv :call g:TexShowPDF()<CR>
+" latex settings
+nmap <silent> <leader>ll :call g:LaTexCompile()<CR>
+nmap <silent> <leader>lv :call g:LaTexShowPDF()<CR>
