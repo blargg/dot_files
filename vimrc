@@ -55,6 +55,8 @@ set t_vb=                  " Make the visual bell emit nothing
 set showcmd                " Show the current command
 set formatoptions+=j
 
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 " --- Command-t options ---
 let g:CommandTMaxHeight=10
 
@@ -279,15 +281,6 @@ if has('eval')
    endfun
    nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 endif
-
-" tab indents selection
-vmap <silent> <Tab> >gv
-
-" shift-tab unindents
-vmap <silent> <S-Tab> <gv
-
-" Page using space
-noremap <Space> <C-F>
 
 " shifted arrows are stupid
 inoremap <S-Up> <C-O>gk
