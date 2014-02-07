@@ -19,13 +19,15 @@ import XMonad.Layout.Circle
 import XMonad.Layout.StackTile
 import XMonad.Layout.WorkspaceDir
 
+import JackStack
+
 main = do
     xmproc <- spawnPipe "~/bin/xmobar"
     xmonad $ myConfig xmproc
 
 modm = mod1Mask
 
-myLayout =  setOptions $ tiled ||| Mirror Accordion ||| Circle ||| StackTile 1 (3/100) (1/2)
+myLayout =  setOptions $ tiled ||| Mirror Accordion ||| JackStack ||| StackTile 1 (3/100) (1/2)
     where setOptions = workspaceDir "~" . smartBorders . avoidStruts
           tiled = Tall nmaster delta ratio
           nmaster = 1
