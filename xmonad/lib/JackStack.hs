@@ -5,12 +5,11 @@ module JackStack (
 
 import XMonad
 import qualified XMonad.StackSet as W
-import Data.Ratio
 
-data JackStack a = JackStack deriving ( Read, Show )
+data JackStack a = JackStack !Rational deriving ( Read, Show )
 
 instance LayoutClass JackStack Window where
-    pureLayout _ (Rectangle sx sy sw sh) ws =
+    pureLayout (JackStack r) (Rectangle sx sy sw sh) ws =
         if total == 0
            then [(W.focus ws, Rectangle sx sy sw sh)]
            else (focus:(reverse tops)) ++ bottoms
@@ -18,13 +17,15 @@ instance LayoutClass JackStack Window where
         ups = W.up ws
         dns = W.down ws
         total = (length ups) + (length dns)
-        delta = div (sw) $ fromIntegral (4 * (total))
+        delta = round $ (fromIntegral sw) * ((1 - r) / (fromIntegral total)) :: Int
         getPos i = Rectangle
             { rect_x = sx + (fromIntegral (delta * (fromIntegral i)))
             , rect_y = sy
             , rect_height = sh
-            , rect_width = div (3 * (sw)) (fromIntegral 4)
+            , rect_width = round $ r * (fromIntegral sw)
             }
         focus = ((W.focus ws), getPos (length ups))
         tops = zip (reverse ups) (map getPos [0..])
         bottoms = zip dns (map getPos[((length ups) + 1) ..])
+
+    description _ = "JackStack"

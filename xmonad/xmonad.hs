@@ -14,9 +14,6 @@ import XMonad.Prompt.Shell
 
 import XMonad.Layout
 import XMonad.Layout.NoBorders
-import XMonad.Layout.Accordion
-import XMonad.Layout.Circle
-import XMonad.Layout.StackTile
 import XMonad.Layout.WorkspaceDir
 
 import JackStack
@@ -27,7 +24,7 @@ main = do
 
 modm = mod1Mask
 
-myLayout =  setOptions $ tiled ||| Mirror Accordion ||| JackStack ||| StackTile 1 (3/100) (1/2)
+myLayout =  setOptions $ tiled ||| JackStack (3/4)
     where setOptions = workspaceDir "~" . smartBorders . avoidStruts
           tiled = Tall nmaster delta ratio
           nmaster = 1
