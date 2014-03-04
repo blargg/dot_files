@@ -24,6 +24,16 @@ LINK_MAP=(
           'volume:bin/volume'
           )
 
+# Script will check to see if these files are in the current PATH and output if
+# any are not found
+IMPORTANT_PROGRAMS=(
+    'zsh'
+    'xmonad'
+    'xmobar'
+    'git'
+    'vim'
+    )
+
 # the root of where you want the links to show up
 DEST="$HOME"
 
@@ -44,8 +54,13 @@ set -e
 
 echo ''
 
+# font configuration
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+# basic output
 info () {
-  printf "  [ \033[00;34m..\033[0m ] $1"
+  printf "\r  [ \033[00;34m..\033[0m ] $1"
 }
 
 user () {
@@ -54,6 +69,10 @@ user () {
 
 success () {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+warn () {
+  printf "\r\033[2K  [\033[0;33mWARNING\033[0m] $1\n"
 }
 
 fail () {
@@ -65,6 +84,10 @@ fail () {
 link_files () {
   ln -s $1 $2
   success "linked $1 to $2"
+}
+
+check_in_path () {
+    type $1 > /dev/null 2>&1 || warn $bold$1$normal" was not found in PATH"
 }
 
 #TODO this could be more robust
@@ -84,7 +107,7 @@ overwrite_all=false
 backup_all=false
 skip_all=false
 
-  info 'installing dotfiles'
+info 'installing dotfiles'
 
 for str in ${LINK_MAP[@]}; do
 
@@ -167,3 +190,11 @@ for str in ${LINK_MAP[@]}; do
     fi
 
 done
+
+echo "checking installed programs"
+
+for prog in ${IMPORTANT_PROGRAMS[@]}; do
+    check_in_path $prog
+done
+
+echo "done"
