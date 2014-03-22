@@ -22,6 +22,7 @@ LINK_MAP=(
           'xmod:.xmod'
           'lock:bin/lock'
           'volume:bin/volume'
+          'fonts:.fonts'
           )
 
 # Script will check to see if these files are in the current PATH and output if
@@ -196,5 +197,7 @@ echo "checking installed programs"
 for prog in ${IMPORTANT_PROGRAMS[@]}; do
     check_in_path $prog
 done
+
+fc-cache -f ~/.fonts
 
 echo "done"

@@ -1,3 +1,4 @@
+*mylatex.txt* My basic latex helpers
 Basic plugin for using latex.
 
 

@@ -2,10 +2,6 @@
 " Original author: Saleem Abdulrasool <compnerd@compnerd.org>
 " vim: set ts=3 sw=3 et nowrap:
 
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-execute pathogen#helptags()
-
 if has('multi_byte')      " Make sure we have unicode support
    scriptencoding utf-8    " This file is in UTF-8
 
@@ -16,11 +12,21 @@ if has('multi_byte')      " Make sure we have unicode support
       endif
    endif
    set encoding=utf-8      " Default encoding should always be UTF-8
+   let g:airline_powerline_fonts=1
 endif
+
+set nocompatible
+filetype off               " turn on later
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'bling/vim-airline'
+
 
 " ---- General Setup ----
 set ttyfast
-set nocompatible           " Don't emulate vi's limitations
 set tabstop=4              " 4 spaces for tabs
 set shiftwidth=4           " 4 spaces for indents
 set smarttab               " Tab next line based on current line
@@ -418,3 +424,6 @@ inoremap <silent> <F2> <C-O>:call g:ToggleColorColumn() <CR>
 " latex settings
 nmap <silent> <leader>ll :call g:LaTexCompile()<CR>
 nmap <silent> <leader>lv :call g:LaTexShowPDF()<CR>
+
+let g:airline_theme='murmur'
+let g:airline#extensions#tabline#enabled = 1
