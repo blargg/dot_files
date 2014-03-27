@@ -23,6 +23,18 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-git'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tomasr/molokai'
+Bundle 'tpope/vim-repeat'
 
 
 " ---- General Setup ----
@@ -64,7 +76,7 @@ if v:version > 703
    set formatoptions+=j
 endif
 
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " --- Command-t options ---
 let g:CommandTMaxHeight=10
@@ -336,7 +348,6 @@ map Q <Nop>
 " Toggle numbers with F12
 nmap <silent> <F12> :silent set number!<CR>
 imap <silent> <F12> <C-O>:silent set number!<CR>
-noremap <silent> <F4> :set hls!<CR>
 
 " Don't force column 0 for #
 inoremap # X<BS>#
@@ -392,25 +403,12 @@ if v:version >= 700
    let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
    map <C-F12> :!$HOME/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
    " TODO find a better fix for the above
-   map <F6> :!$HOME/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+   map <F6> :!$HOME/bin/ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q .<CR><CR>
    " add current directory's generated tags file to available tags
    set tags+=./tags
 endif
 
 set t_RV=
-
-
-" Sessions settings
-"   type "SQ" to save the session, save all the files and quit
-nmap SQ <ESC>:mksession!<CR>:wqa<CR>
-" if vim is called with no arguments, source the Session.vim
-" file in the current directory
-function! RestoreSession()
-    if argc() == 0 && filereadable("./Session.vim")
-        execute 'source ./Session.vim'
-    end
-endfunction
-autocmd VimEnter * call RestoreSession()
 
 " Toggle colorcolumn
 function! g:ToggleColorColumn()
@@ -430,3 +428,15 @@ nmap <silent> <leader>lv :call g:LaTexShowPDF()<CR>
 
 let g:airline_theme='murmur'
 let g:airline#extensions#tabline#enabled = 1
+
+nmap <C-G> :TagbarToggle<CR>
+imap <silent> <C-G> <C-O>:silent TagbarToggle<CR>
+
+let g:ctrlp_prompt_mappings = {
+   \ 'PrtClearCache()':      ['<c-w>'],
+   \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+   \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+   \ }
+
+let g:vimwiki_list = [{'path': '~/wiki/cookingdb'},
+      \ {'path': '~/vimwiki'}]
