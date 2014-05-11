@@ -35,6 +35,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-repeat'
+Bundle 'rosenfeld/conque-term'
 
 
 " ---- General Setup ----

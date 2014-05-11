@@ -64,8 +64,12 @@ myKeys = [ ((modm .|. shiftMask, xK_l), spawn "~/bin/lock")
 myWorkspaceKeys =
     [((m .|. modm, k), windows $ f i)
     | (i,k) <- zip (myWorkspaces) [xK_1..]
-    , (f,m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]
+    , (f,m) <- [(W.greedyView, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]
     ]
+    ++
+    [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    , (f, m) <- [(W.greedyView, controlMask)]]
 
 myMediaKeys =
     [ ("<XF86AudioLowerVolume>", spawn "~/bin/volume down")
