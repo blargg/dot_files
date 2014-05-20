@@ -15,6 +15,7 @@ import XMonad.Prompt.Shell
 import XMonad.Layout
 import XMonad.Layout.NoBorders
 import XMonad.Layout.WorkspaceDir
+import XMonad.Layout.ToggleLayouts
 
 import JackStack
 
@@ -25,7 +26,7 @@ main = do
 modm = mod1Mask
 
 myLayout =  setOptions $ tiled ||| JackStack (3/4)
-    where setOptions = workspaceDir "~" . smartBorders . avoidStruts
+    where setOptions = workspaceDir "~" . smartBorders . avoidStruts . toggleLayouts Full
           tiled = Tall nmaster delta ratio
           nmaster = 1
           ratio = 1/2
@@ -61,6 +62,7 @@ myKeys = [ ((modm .|. shiftMask, xK_l), spawn "~/bin/lock")
          , ((modm .|. controlMask, xK_backslash), spawn "sudo /usr/bin/systemctl suspend")
          , ((mod4Mask, xK_w), raiseBrowser)
          , ((modm .|. shiftMask, xK_o), restart "/home/tom/bin/changewm" True)
+         , ((modm, xK_f), sendMessage (Toggle "Full"))
          ]
 
 myWorkspaceKeys =
