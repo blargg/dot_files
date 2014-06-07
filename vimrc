@@ -278,6 +278,7 @@ if has('autocmd')
 
       autocmd FileType c,cpp :call <SID>cabbrev()
 
+      autocmd BufNewFile,BufRead wscript set filetype=python syntax=python
       autocmd BufNewFile,BufRead *.mm set filetype=noweb
       autocmd BufNewFile,BufRead *.scala set filetype=scala
       autocmd BufNewFile,BufRead *.proto set filetype=proto
