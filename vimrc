@@ -72,12 +72,12 @@ set noerrorbells           " Disable error bells
 set visualbell             " Turn visual bell on
 set t_vb=                  " Make the visual bell emit nothing
 set showcmd                " Show the current command
+set secure                 " Be safe when using modeline and files
+set exrc                   " Load the .vimrc in the current folder too
 
 if v:version > 703
    set formatoptions+=j
 endif
-
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " --- Command-t options ---
 let g:CommandTMaxHeight=10
@@ -172,9 +172,9 @@ if has('eval')
    endfun
 
    if has("gui_running")
-      call LoadColorScheme("wombat:twilight256:desert")
+      call LoadColorScheme("molokai:wombat:twilight256:desert")
    elseif &t_Co == 256
-      call LoadColorScheme("wombat:twilight256:inkpot")
+      call LoadColorScheme("molokai:wombat:twilight256:inkpot")
    elseif &t_Co == 88
       call LoadColorScheme("wombat:zellner")
    else
