@@ -1,7 +1,7 @@
 Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = Top
+       , position = TopSize C 100 16
        , lowerOnStart = True
        , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","#8AE234","--high","#CC0000"] 10
                     , Run Network "wlan0" ["-L","0","-H","32","--normal","#8AE234","--high","#CC0000"] 10
@@ -10,13 +10,13 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %I:%M:%S" "date" 10
-					, Run BatteryP ["BAT1"]
-							["-t", "<acstatus><watts> (<left>%)",
-							 "-L", "10", "-H", "80", "-p", "3",
-							 "--", "-O", "<fc=green>On</fc> - ", "-o", "",
-							 "-L", "-15", "-H", "-5",
-							 "-l", "red", "-m", "blue", "-h", "green"]
-							 600
+                    , Run BatteryP ["BAT1"]
+                            ["-t", "<acstatus><watts> (<left>%)",
+                             "-L", "10", "-H", "80", "-p", "3",
+                             "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                             "-L", "-15", "-H", "-5",
+                             "-l", "red", "-m", "blue", "-h", "green"]
+                             600
                     , Run StdinReader
                     ]
        , sepChar = "%"
