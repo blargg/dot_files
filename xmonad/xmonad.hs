@@ -2,6 +2,7 @@ import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Actions.GridSelect
@@ -35,11 +36,12 @@ myLayout =  setOptions $ tiled ||| JackStack (3/4)
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1..9::Int]
 
-myConfig pipeproc = addAllMyKeys myConfig'
+myConfig pipeproc = ewmh . addAllMyKeys $ myConfig'
     where myConfig' = defaultConfig
-                        { terminal = "urxvt"
+                        { terminal = "urxvtc"
                         , workspaces = myWorkspaces
                         , manageHook = manageDocks <+> myManageHook
+                        , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
                         , layoutHook = myLayout
                         , modMask = modm
                         , logHook = dynamicLogWithPP xmobarPP
