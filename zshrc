@@ -30,4 +30,3 @@ fi
 
 # bind Ctrl-O to ranger-cd:
 bindkey -s '^O' '^qranger-cd\n'
-
