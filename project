@@ -1,0 +1,4 @@
+#!/bin/bash
+project_dir="$HOME/.project-templates"
+src_dir="$project_dir/$1"
+cp -r $src_dir $2

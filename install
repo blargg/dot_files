@@ -21,6 +21,7 @@ LINK_MAP=(
           'dircolors:.dircolors'
           'xmod:.xmod'
           'lock:bin/lock'
+          'project:bin/project'
           'volume:bin/volume'
           'fonts:.fonts'
           )
