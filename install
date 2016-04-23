@@ -19,9 +19,8 @@ LINK_MAP=(
           'bashrc:.bashrc'
           'commonsh:.commonsh'
           'dircolors:.dircolors'
-          'xmod:.xmod'
+          'xmod:.Xmodmap'
           'lock:bin/lock'
-          'project:bin/project'
           'volume:bin/volume'
           'fonts:.fonts'
           )
