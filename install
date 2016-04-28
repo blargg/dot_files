@@ -20,6 +20,7 @@ LINK_MAP=(
           'commonsh:.commonsh'
           'dircolors:.dircolors'
           'xmod:.Xmodmap'
+          'Xdefaults:.Xdefaults'
           'lock:bin/lock'
           'volume:bin/volume'
           'fonts:.fonts'
