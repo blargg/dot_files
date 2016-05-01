@@ -17,12 +17,13 @@ endif
 
 set nocompatible
 filetype off               " turn on later
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'kien/ctrlp.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'chrisbra/Recover.vim'
@@ -34,8 +35,11 @@ Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tomasr/molokai'
+Bundle 'idris-hackers/idris-vim'
 Bundle 'rosenfeld/conque-term'
 
+Bundle 'Shougo/vimproc'
+Bundle 'eagletmt/ghcmod-vim'
 
 " ---- General Setup ----
 set ttyfast
@@ -441,3 +445,12 @@ let g:ctrlp_prompt_mappings = {
 
 let g:vimwiki_list = [{'path': '~/wiki/cookingdb'},
       \ {'path': '~/vimwiki'}]
+
+let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
+let g:syntastic_always_populate_loc_list = 1
+
+" GHC mod
+nmap <leader>tt :GhcModType<CR>
+nmap <leader>tc :GhcModTypeClear<CR>
+nmap <leader>ti :GhcModTypeInsert<CR>
+nmap <leader>cc :GhcModSplitFunCase<CR>
