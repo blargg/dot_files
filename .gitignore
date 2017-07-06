@@ -1,0 +1,13 @@
+
+# haskell xmonad
+*.hi
+xmonad/xmonad-x86_64-linux
+xmonad/xmonad.errors
+xmonad/xmonad.state
+xmonad/prompt-history
+
+# vim
+vim/bundle/
+
+# zsh
+zsh/.history
