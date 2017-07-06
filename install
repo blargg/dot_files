@@ -1,6 +1,12 @@
 #!/bin/bash
 # Based on a script by Zach Holman.
 
+# import functions
+# change directories to be in the same one as the executable (in case we aren't already there)
+cd `dirname $0`> /dev/null
+DIR=$PWD
+source "$DIR/install_lib"
+
 # LINK_MAP usage
 # 'file:link'
 # This is a map from files in the project, to where
@@ -30,6 +36,7 @@ LINK_MAP=(
 # any are not found
 IMPORTANT_PROGRAMS=(
     'zsh'
+    'startx'
     'xmonad'
     'xmobar'
     'git'
@@ -40,57 +47,10 @@ IMPORTANT_PROGRAMS=(
 DEST="$HOME"
 
 
-print_usage(){
-    echo "$0: links your dofiles from your home folder to this project
-$0 [-h]
-* Make sure that this script stays in the folder that it came in (should be the
-      main directory for the project).
-* links are realative (they don't start from root)
-* if you move this folder, all the links will break
-
--h    print this help and then exits
-        "
-}
-
 set -e
 
 echo ''
 
-# font configuration
-bold=$(tput bold)
-normal=$(tput sgr0)
-
-# basic output
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1"
-}
-
-user () {
-  printf "\r  [ \033[0;33m?\033[0m ] $1 "
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-warn () {
-  printf "\r\033[2K  [\033[0;33mWARNING\033[0m] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
-link_files () {
-  ln -s $1 $2
-  success "linked $1 to $2"
-}
-
-check_in_path () {
-    type $1 > /dev/null 2>&1 || warn $bold$1$normal" was not found in PATH"
-}
 
 #TODO this could be more robust
 if [ "$1" = "-h" ]
@@ -99,9 +59,6 @@ then
     exit 0
 fi
 
-# change directories to be in the same one as the executable (in case we aren't already there)
-cd `dirname $0`> /dev/null
-DIR=$PWD
 # need the realative directory of this file to the user's home folder
 REL_DIR="${DIR#"$DEST/"}"
 
@@ -200,5 +157,7 @@ for prog in ${IMPORTANT_PROGRAMS[@]}; do
 done
 
 fc-cache -f ~/.fonts
+install_Vundle
 
+echo ""
 echo "done"
