@@ -4,4 +4,5 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias cdh='urxvt -cd $(pwd) &'
-alias sys='sudo systemctl'
+alias sys='systemctl'
+alias ssys='sudo systemctl'
