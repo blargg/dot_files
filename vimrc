@@ -18,28 +18,30 @@ endif
 set nocompatible
 filetype off               " turn on later
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'kien/ctrlp.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'chrisbra/Recover.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-git'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'ervandew/supertab'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tomasr/molokai'
-Bundle 'idris-hackers/idris-vim'
-Bundle 'rosenfeld/conque-term'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'chrisbra/Recover.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-git'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'ervandew/supertab'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tomasr/molokai'
+Plugin 'idris-hackers/idris-vim'
+Plugin 'rosenfeld/conque-term'
 
-Bundle 'Shougo/vimproc'
-Bundle 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc'
+Plugin 'eagletmt/ghcmod-vim'
+
+call vundle#end()
 
 " ---- General Setup ----
 set ttyfast
