@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Based on a script by Zach Holman.
 
 # LINK_MAP usage
