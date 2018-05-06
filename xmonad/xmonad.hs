@@ -38,7 +38,7 @@ myWorkspaces = map show [1..9::Int]
 
 myConfig pipeproc = ewmh . addAllMyKeys $ myConfig'
     where myConfig' = defaultConfig
-                        { terminal = "urxvtc"
+                        { terminal = "urxvt"
                         , workspaces = myWorkspaces
                         , manageHook = manageDocks <+> myManageHook
                         , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
