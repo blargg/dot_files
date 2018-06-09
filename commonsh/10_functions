@@ -4,7 +4,7 @@
 # runs ranger and changes directory of the shell to match
 function ranger-cd {
 	tempfile='/tmp/.ranger.ranger-cd'
-	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	ranger --choosedir="$tempfile" "${@:-$(pwd)}"
 	test -f "$tempfile" &&
 	if [  "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
 		cd -- "$(cat "$tempfile")"
