@@ -40,6 +40,7 @@ Plugin 'rosenfeld/conque-term'
 
 Plugin 'Shougo/vimproc'
 Plugin 'eagletmt/ghcmod-vim'
+Plugin 'LnL7/vim-nix'
 
 call vundle#end()
 
