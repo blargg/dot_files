@@ -32,7 +32,6 @@ LINK_MAP=(
 IMPORTANT_PROGRAMS=(
     'zsh'
     'xmonad'
-    'xmobar'
     'git'
     'vim'
     )
