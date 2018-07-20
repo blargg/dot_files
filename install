@@ -24,6 +24,7 @@ LINK_MAP=(
           'lock:bin/lock'
           'volume:bin/volume'
           'fonts:.fonts'
+          'ipython_config.py:.ipython/profile_default/ipython_config.py'
           )
 
 # Script will check to see if these files are in the current PATH and output if
