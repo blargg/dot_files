@@ -35,6 +35,7 @@ Plugin 'ervandew/supertab'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tomasr/molokai'
+Plugin 'vim-scripts/wombat256.vim'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'rosenfeld/conque-term'
 
@@ -178,9 +179,9 @@ if has('eval')
    endfun
 
    if has("gui_running")
-      call LoadColorScheme("molokai:wombat:twilight256:desert")
+      call LoadColorScheme("wombat256:wombat:molokai")
    elseif &t_Co == 256
-      call LoadColorScheme("molokai:wombat:twilight256:inkpot")
+      call LoadColorScheme("wombat256:wombat:molokai")
    elseif &t_Co == 88
       call LoadColorScheme("wombat:zellner")
    else
