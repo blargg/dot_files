@@ -6,3 +6,5 @@ alias grep='grep --color=auto'
 alias cdh='urxvt -cd $(pwd) &'
 alias sys='systemctl'
 alias ssys='sudo systemctl'
+
+alias nix-ipython='nix-shell --run ipython'
