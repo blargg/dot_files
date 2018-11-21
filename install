@@ -23,7 +23,6 @@ LINK_MAP=(
           'Xdefaults:.Xdefaults'
           'lock:bin/lock'
           'volume:bin/volume'
-          'fonts:.fonts'
           'ipython_config.py:.ipython/profile_default/ipython_config.py'
           )
 
@@ -198,7 +197,5 @@ echo "checking installed programs"
 for prog in ${IMPORTANT_PROGRAMS[@]}; do
     check_in_path $prog
 done
-
-fc-cache -f ~/.fonts
 
 echo "done"

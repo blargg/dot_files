@@ -1,7 +1,5 @@
-xterm*faceName:Inconsolata for Powerline:style=Regular:size=12
-
-URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
-URxvt*boldFont: xft:Inconsolata for Powerline:bold:pixelsize=16:antialias=true
+URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16:antialias=true
+URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=16:antialias=true
 URxvt*scrollstyle: plain
 URxvt*scrollBar: on
 
