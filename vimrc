@@ -21,27 +21,29 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
+
+" General Plugins
 Plugin 'SirVer/ultisnips'
 Plugin 'chrisbra/Recover.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
-Plugin 'tpope/vim-git'
-Plugin 'tomtom/tcomment_vim'
 Plugin 'ervandew/supertab'
-Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/wombat256.vim'
-Plugin 'idris-hackers/idris-vim'
-Plugin 'rosenfeld/conque-term'
+Plugin 'w0rp/ale'
 
+" Themes
+Plugin 'tomasr/molokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/wombat256.vim'
+
+" Vim plugins
+Plugin 'LnL7/vim-nix'
 Plugin 'Shougo/vimproc'
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'LnL7/vim-nix'
 
 call vundle#end()
 
