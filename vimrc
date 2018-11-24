@@ -242,9 +242,6 @@ endif
 
 " ---- Key Mappings ----
 "
-" Tagbar
-nnoremap <silent> <F9> :TagbarToggle<CR>
-
 " Better window split navigation
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -440,17 +437,11 @@ nmap <silent> <leader>lv :call g:LaTexShowPDF()<CR>
 let g:airline_theme='murmur'
 let g:airline#extensions#tabline#enabled = 1
 
-nmap <C-G> :TagbarToggle<CR>
-imap <silent> <C-G> <C-O>:silent TagbarToggle<CR>
-
 let g:ctrlp_prompt_mappings = {
    \ 'PrtClearCache()':      ['<c-w>'],
    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
    \ }
-
-let g:vimwiki_list = [{'path': '~/wiki/cookingdb'},
-      \ {'path': '~/vimwiki'}]
 
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 let g:syntastic_always_populate_loc_list = 1
