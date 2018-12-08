@@ -434,9 +434,16 @@ inoremap <silent> <F2> <C-O>:call g:ToggleColorColumn() <CR>
 nmap <silent> <leader>ll :call g:LaTexCompile()<CR>
 nmap <silent> <leader>lv :call g:LaTexShowPDF()<CR>
 
+" airline
 let g:airline_theme='murmur'
 let g:airline#extensions#tabline#enabled = 1
 
+" ale
+let g:ale_linters = {
+   \ 'haskell': ['ghc-mod', 'hlint', 'hie', 'hdevtools']
+   \}
+
+" control-p
 let g:ctrlp_prompt_mappings = {
    \ 'PrtClearCache()':      ['<c-w>'],
    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
