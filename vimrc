@@ -453,6 +453,12 @@ let g:ctrlp_prompt_mappings = {
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 let g:syntastic_always_populate_loc_list = 1
 
+" haskell fast-tags
+augroup tags
+   au BufWritePost *.hs       silent! !fast-tags %
+   au BufWritePost *.hsc      silent! !fast-tags %
+augroup END
+
 " GHC mod
 nmap <leader>tt :GhcModType<CR>
 nmap <leader>tc :GhcModTypeClear<CR>
