@@ -450,7 +450,7 @@ let g:ctrlp_prompt_mappings = {
    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
    \ }
 
-nmap <C-[> :CtrlPTag<CR>
+nmap <leader>. :CtrlPTag<CR>
 
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 let g:syntastic_always_populate_loc_list = 1
