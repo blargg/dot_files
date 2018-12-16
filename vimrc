@@ -45,6 +45,10 @@ Plugin 'LnL7/vim-nix'
 Plugin 'Shougo/vimproc'
 Plugin 'eagletmt/ghcmod-vim'
 
+" fzf
+Plugin 'junegunn/fzf',{'dir':'~/.fzf','do':'./install --all'}
+Plugin 'junegunn/fzf.vim'
+
 call vundle#end()
 
 " ---- General Setup ----
@@ -83,6 +87,8 @@ set t_vb=                  " Make the visual bell emit nothing
 set showcmd                " Show the current command
 set secure                 " Be safe when using modeline and files
 set exrc                   " Load the .vimrc in the current folder too
+
+let mapleader=" "    " Set leader to splace
 
 if v:version > 703
    set formatoptions+=j
@@ -450,7 +456,18 @@ let g:ctrlp_prompt_mappings = {
    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
    \ }
 
-nmap <leader>. :CtrlPTag<CR>
+" fzf settings
+nmap <c-p> :Files<CR>
+nmap <leader>p :Files<CR>
+nmap <leader>. :Tags<CR>
+
+" Mapping Search
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+
 
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 let g:syntastic_always_populate_loc_list = 1
