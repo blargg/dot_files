@@ -23,10 +23,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " General Plugins
-Plugin 'SirVer/ultisnips'
 Plugin 'chrisbra/Recover.vim'
 Plugin 'ervandew/supertab'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
