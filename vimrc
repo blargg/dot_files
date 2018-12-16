@@ -478,8 +478,6 @@ augroup tags
    au BufWritePost *.hsc      silent! !fast-tags %
 augroup END
 
-autocmd FileType haskell set formatprg='brittany'
-
 " GHC mod
 nmap <leader>tt :GhcModType<CR>
 nmap <leader>tc :GhcModTypeClear<CR>
