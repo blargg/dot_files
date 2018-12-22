@@ -1,5 +1,8 @@
-Dot Files
+Dot Files (Deprecated)
 =========
 
+This project has been deprecated in favor of
+[dotfiles](https://github.com/blargg/dotfiles)
+
 Collection of dot files and other settings.
-Organised for easier use.
+Organized for easier use.
